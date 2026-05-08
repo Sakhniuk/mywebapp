@@ -1,0 +1,19 @@
+[Unit]
+Description=MyWebApp Java Service
+After=network.target mariadb.service
+Requires=mariadb.service
+
+[Service]
+User=app
+Group=app
+WorkingDirectory=/opt/mywebapp
+Environment="DB_URL=jdbc:mariadb://localhost:3306/mywebapp"
+Environment="DB_USER=mywebapp_user"
+Environment="DB_PASSWORD=mywebapp_pass"
+Environment="PORT=5000"
+ExecStart=/usr/bin/java -jar /opt/mywebapp/mywebapp.jar
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
