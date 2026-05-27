@@ -1,0 +1,7 @@
+/opt/mywebapp/src/main/java/com/example/mywebapp/controller/HealthController.java
+/opt/mywebapp/src/main/java/com/example/mywebapp/service/NoteService.java
+/opt/mywebapp/src/main/java/com/example/mywebapp/model/Note.java
+/opt/mywebapp/src/main/java/com/example/mywebapp/MyWebAppApplication.java
+/opt/mywebapp/src/main/java/com/example/mywebapp/controller/NotesController.java
+/opt/mywebapp/src/main/java/com/example/mywebapp/migration/DatabaseMigration.java
+/opt/mywebapp/src/main/java/com/example/mywebapp/repository/NoteRepository.java

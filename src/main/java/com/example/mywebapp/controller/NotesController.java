@@ -7,15 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 public class NotesController {
 
-    @Autowired
-    private NoteService noteService;
+    @Autowired private NoteService noteService;
 
     @GetMapping("/")
     public ResponseEntity<String> index() {
@@ -36,19 +33,22 @@ public class NotesController {
         String accept = request.getHeader("Accept");
 
         if (accept != null && accept.contains("application/json")) {
-            List<Map<String, Object>> response = notes.stream().map(note -> {
+            List<Map<String, Object>> response = new ArrayList<>();
+            for (Note note : notes) {
                 Map<String, Object> map = new HashMap<>();
                 map.put("id", note.getId());
                 map.put("title", note.getTitle());
-                return map;
-            }).toList();
+                response.add(map);
+            }
             return ResponseEntity.ok(response);
         } else {
             StringBuilder html = new StringBuilder("<html><body><h1>Notes</h1><table border='1'>");
-            html.append("<tr><th>ID</th><th>Title</th></tr>");
+            html.append("<tr><th>ID</th><th>Title</th></table>");
             for (Note note : notes) {
-                html.append("<tr><td>").append(note.getId()).append("</td>")
-                    .append("<td>").append(note.getTitle()).append("</td></tr>");
+                html.append("<tr>")
+                    .append("<td>").append(note.getId()).append("</td>")
+                    .append("<td>").append(note.getTitle()).append("</td>")
+                    .append("</tr>");
             }
             html.append("</table></body></html>");
             return ResponseEntity.ok().header("Content-Type", "text/html").body(html.toString());

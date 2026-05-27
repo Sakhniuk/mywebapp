@@ -1,0 +1,7 @@
+com/example/mywebapp/repository/NoteRepository.class
+com/example/mywebapp/model/Note.class
+com/example/mywebapp/controller/NotesController.class
+com/example/mywebapp/MyWebAppApplication.class
+com/example/mywebapp/controller/HealthController.class
+com/example/mywebapp/migration/DatabaseMigration.class
+com/example/mywebapp/service/NoteService.class
